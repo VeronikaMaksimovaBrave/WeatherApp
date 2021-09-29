@@ -1,8 +1,9 @@
 import type { NextPage } from 'next'
-import styles from '../styles/Home.module.css'
 import Head from 'next/head'
-import {WeatherContainer} from './Weather/weatherContainer'
+import React from 'react'
+import { WeatherContainer } from 'src/weather/weatherContainer'
 
+import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
   return (
@@ -13,9 +14,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1 className={styles.title}>
-        Weather App
-      </h1>
+      <h1 className={styles.title}>Weather App</h1>
 
       <WeatherContainer />
 
@@ -23,9 +22,8 @@ const Home: NextPage = () => {
         <a
           href="https://vk.com/nikaclemente"
           target="_blank"
-          rel="noopener noreferrer"
-        >
-           Created by Nika Clemente 2021
+          rel="noopener noreferrer">
+          Created by Nika Clemente 2021
         </a>
       </footer>
     </div>
