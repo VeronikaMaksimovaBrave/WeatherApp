@@ -1,31 +1,27 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import React from 'react'
-import { WeatherContainer } from 'src/weather/weatherContainer'
+import { Footer } from 'src/components/footer'
+import { Container } from 'src/components/weather/container'
 
-import styles from '../styles/Home.module.css'
+import { useStyles } from './styles'
 
 const Home: NextPage = () => {
+  const classes = useStyles()
+
   return (
-    <div className={styles.container}>
+    <div className={classes.container}>
       <Head>
         <title>Weather App</title>
         <meta name="description" content="Weather App" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1 className={styles.title}>Weather App</h1>
+      <h1 className={classes.title}>Прогноз погоды</h1>
 
-      <WeatherContainer />
+      <Container />
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vk.com/nikaclemente"
-          target="_blank"
-          rel="noopener noreferrer">
-          Created by Nika Clemente 2021
-        </a>
-      </footer>
+      <Footer />
     </div>
   )
 }
