@@ -2,7 +2,6 @@ import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
-import { StoreContext } from 'src/context'
 
 import { useStyles } from './styles'
 
@@ -10,10 +9,8 @@ export const DayInfo = () => {
   const classes = useStyles()
 
   return (
-    <StoreContext.Consumer>
-      {({ store }) => (
         <Card className={classes.root}>
-          <CardContent>
+          {/* <CardContent>
             <Typography
               className={classes.title}
               color="textSecondary"
@@ -29,9 +26,6 @@ export const DayInfo = () => {
               <br />
               (И) {store.wind.speed} м/с {store.wind.deg}
             </Typography>
-          </CardContent>
-        </Card>
-      )}
-    </StoreContext.Consumer>
-  )
+          </CardContent> */}
+        </Card>)
 }
