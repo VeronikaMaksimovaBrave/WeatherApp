@@ -43,3 +43,6 @@ export const initStore: IResponseDate = {
 }
 
 export const StoreContext = React.createContext(initStore)
+
+const initCity = 'izhevsk'
+export const CityContext = React.createContext(initCity)
