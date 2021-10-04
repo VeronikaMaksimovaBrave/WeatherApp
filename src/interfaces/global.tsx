@@ -8,37 +8,51 @@ export interface Day {
   windDir?: string
 }
 
-export interface Date {
-  cityName: string
-  lat: number
-  lon: number
-  main: {
-    temp: number
-    emp_min: number
-    temp_max: number
-    feels_like: number
-    pressure: number
-    humidity: number
-  }
-  wind: {
-    speed: number
-    deg: number
-  }
-  rain: {
-    '3h': number
-  }
+export interface IWeather {
+  description: string
+  icon: string
+  id: number
+  main: string
+}
+
+interface IWeatherRecord {
+  [key: number]: IWeather
+}
+
+export interface IResponseDate {
+  base: string
   clouds: {
     all: number
   }
-  weather: [
-    {
-      id: number
-      main: string
-      description: string
-      icon: string
-    },
-  ]
+  cod: number
+  coord: {
+    lat: number
+    lon: number
+  }
   dt: number
-  dt_iso: string
+  id: number
+  main: {
+    feels_like: number
+    humidity: number
+    pressure: number
+    temp: number
+    temp_max: number
+    temp_min: number
+  }
+  name: string
+  sys: {
+    country: string
+    id: number
+    sunrise: number
+    sunset: number
+    type: number
+  }
   timezone: number
+  visibility: number
+  weather: IWeatherRecord
+  wind: {
+    deg: number
+    gust: number
+    speed: number
+  }
 }

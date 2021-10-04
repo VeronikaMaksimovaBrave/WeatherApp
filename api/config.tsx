@@ -1,3 +1,2 @@
-export const url = 'https://api.weather.yandex.ru/v2/forecast'
-export const lang = 'ru_RU'
-export const apiKey = 'b004d900-7d3e-4ffd-8847-04b82ceddda5'
+export const url = 'http://api.openweathermap.org/data/2.5/weather?q='
+export const apiKey = '26c8e89835bd408dc47e47bccebc56c5'
