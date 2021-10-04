@@ -1,7 +1,14 @@
-import React, { ReactElement, ReactNode, useContext, useMemo, useState } from 'react'
-import noop from 'lodash/noop'
-import { apiKey, url } from 'api/config'
+import { getUrl } from 'api/config'
 import axios from 'axios'
+import noop from 'lodash/noop'
+import React, {
+  ReactElement,
+  ReactNode,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react'
 
 import { IResponseDate } from './interfaces/global'
 
@@ -54,7 +61,7 @@ interface IWeatherContext {
 const initialValue: IWeatherContext = {
   weather: null,
   searchValue: 'kazan',
-  setSearchValue: noop
+  setSearchValue: noop,
 }
 
 const WeatherContext = React.createContext(initialValue)
@@ -65,15 +72,18 @@ interface Props {
 
 export const WeatherContextProvider = ({ children }: Props): ReactElement => {
   const [searchValue, setSearchValue] = useState('kazan')
+  const [weather, setWeather] = useState<IResponseDate | null>(null)
 
-  
+  useEffect(() => {
+    const url = getUrl(searchValue)
 
-  const weather = useMemo(async () => {
-    const urlGetWeather = `${url}${searchValue}&appid=${apiKey}`
+    const t = async () => {
+      const response = await axios.get(url)
 
-    const response = await axios.get(urlGetWeather)
+      setWeather(response.data)
+    }
 
-    return response.data
+    t()
   }, [searchValue])
 
   const value = useMemo(
@@ -86,4 +96,5 @@ export const WeatherContextProvider = ({ children }: Props): ReactElement => {
   )
 }
 
-export const useWeatherContext = (): IWeatherContext=> useContext(WeatherContext)
+export const useWeatherContext = (): IWeatherContext =>
+  useContext(WeatherContext)
